@@ -19,7 +19,7 @@ def get_project_enabled_services(iam_iterator, project_id):
                                      'servicemanagement.googleapis.com']]
     return services
 
-
+ 
 def create_graph(iam_iterator, projects):
     nodes = {}
     edges = []
