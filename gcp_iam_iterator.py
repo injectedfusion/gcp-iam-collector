@@ -13,12 +13,12 @@ class GcpIamIterator:
     def __init__(self, use_cache=True):
         credentials = GoogleCredentials.get_application_default()
         google_crm_service = build('cloudresourcemanager', 'v1',
-                                   credentials=credentials)
-        google_iam_service = build('iam', 'v1', credentials=credentials)
-        google_bq_service = build('bigquery', 'v2', credentials=credentials)
-        google_gcs_service = build('storage', 'v1', credentials=credentials)
+                                   credentials=credentials, cache_discovery=False)
+        google_iam_service = build('iam', 'v1', credentials=credentials, cache_discovery=False)
+        google_bq_service = build('bigquery', 'v2', credentials=credentials, cache_discovery=False)
+        google_gcs_service = build('storage', 'v1', credentials=credentials, cache_discovery=False)
         google_service_management = build('servicemanagement', 'v1',
-                                          credentials=credentials)
+                                          credentials=credentials, cache_discovery=False)
         self.crm_service = CRMProjects(google_crm_service, use_cache)
         self.crm_iam_service = CRMProjectIam(google_crm_service, use_cache)
         self.sa_service = ServiceAccountService(google_iam_service, use_cache)
